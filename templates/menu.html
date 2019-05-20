@@ -1,0 +1,41 @@
+{%- block doc %}
+<!DOCTYPE html>
+<html lang="en">
+{%- block html %}
+<head>
+    <meta charset="UTF-8">
+    <title>Keyword Extraction</title>
+    <link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+
+    <style>
+        {% block style -%} {%- endblock style %}
+    </style>
+</head>
+<body>
+{%- block body %}
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                <a class="nav-link" href="#">Нүүр хуудас<span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('index') }}">Текст оруулах<span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('insert_file') }}">Файл оруулах</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <div class="content">
+            {% block content -%} {%- endblock content %}
+        </div>
+    </div>
+{%- endblock body %}
+</body>
+{%- endblock html %}
+</html>
+{%- endblock doc %}

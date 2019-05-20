@@ -1,0 +1,40 @@
+{% extends "menu.html" %}
+
+{% block style %}
+    .margin-top-20 {
+        margin-top: 20px;
+    }
+
+    .center {
+        text-align: center;
+    }
+
+    .margin-top-50 {
+        margin-top: 50px;
+    }
+
+    .input {
+        height: 300px;
+    }
+
+    .row-fill {
+        width: 100%;
+    }
+
+    .row-half-fill {
+        width: 48%;
+    }
+{% endblock style %}
+
+{% block content %}
+    <div class="center margin-top-20">
+        <form class="form form-horizontal" method="POST" role="form">
+            {{ form.hidden_tag() }}
+            {{ form.input_text }}
+            {{ form.output_text }}
+            <div class="margin-top-50">
+                {{ form.submit_btn }}
+            </div>
+        </form>
+    </div>
+{% endblock content %}
