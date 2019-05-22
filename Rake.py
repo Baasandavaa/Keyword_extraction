@@ -1,10 +1,4 @@
 from __future__ import absolute_import
-# Implementation of RAKE - Rapid Automtic Keyword Exraction algorithm
-# as described in:
-# Rose, S., D. Engel, N. Cramer, and W. Cowley (2010).
-# Automatic keyword extraction from indi-vidual documents.
-# In M. W. Berry and J. Kogan (Eds.), Text Mining: Applications and Theory.unknown: John Wiley and Sons, Ltd.
-
 import re
 import operator
 
@@ -19,15 +13,10 @@ def is_number(s):
 def load_stop_words(stop_word_file, regex):
     with open(stop_word_file, encoding='utf8') as stop_word_file:
         stop_words = re.split(regex, stop_word_file.read())
-    return [word for word in stop_words if word not in ('', ' ')]  # filters empty string matches
+    return [word for word in stop_words if word not in ('', ' ')]
 
 
 def separate_words(text):
-    """
-    Utility function to return a list of all words that are have a length greater than a specified number of characters.
-    @param text The text that must be split in to words.
-    @param min_word_return_size The minimum no of characters a word must have to be included.
-    """
     splitter = re.compile('(?u)\W+')
     words = []
     for single_word in splitter.split(text):
@@ -95,12 +84,14 @@ def generate_candidate_keyword_scores(phrase_list, word_score, minFrequency):
     keyword_candidates = {}
     for phrase in phrase_list:
         if phrase_list.count(phrase) >= minFrequency:
-            keyword_candidates.setdefault(phrase, 0)
             word_list = separate_words(phrase)
             candidate_score = 0
             for word in word_list:
                 candidate_score += word_score[word]
-            keyword_candidates[phrase] = candidate_score
+            if candidate_score > 1:
+                keyword_candidates.setdefault(phrase, 0)
+                keyword_candidates[phrase] = candidate_score
+
     return keyword_candidates
 
 

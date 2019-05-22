@@ -1,0 +1,27 @@
+{% extends "menu.html" %}
+
+{% block style %}
+
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <!-- home content -->
+        <div class="col-md-10 col-md-offset-1">
+            <div class="home-content">
+                <h1 class="white-text">Keyword Extraction</h1>
+                <p class="white-text">
+                    Ажлын байрны сангаас хэрэгцээт түлхүүр үгийг гаргах юм.
+                    Хэт их өгөгдөл дунд ямар мэдээлэл байгааг унших эвсэл харах, хайх зэрэг нь хүндрэлтэй байдаг.
+                    Энэхүү системийн хувьд та текст оруулахад таньд хэрэгцээт түлхүүр үгсийг гарган өгөх юм.
+
+                </p>
+                <form method="get" action="/text">
+                <button class="white-btn">Турших</button>
+                <button class="main-btn">Үнэлэх</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
